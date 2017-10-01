@@ -2,3 +2,7 @@
 	path = ThirdParty/rapidjson
 	url = https://github.com/miloyip/rapidjson
 	branch = master
+[submodule "example_ros_workspace/src/rosbridge_suite"]
+	path = example_ros_workspace/src/rosbridge_suite
+	url = https://github.com/RobotWebTools/rosbridge_suite
+	branch = master

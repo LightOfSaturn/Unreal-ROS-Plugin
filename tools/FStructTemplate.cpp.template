@@ -1,5 +1,5 @@
-#include "Unreal_ROS.h"
 #include "{{Header}}"
+#include "Unreal_ROS.h"
 
 {% for Struct in StructList%}
 {% set TypeName = Struct.name %}

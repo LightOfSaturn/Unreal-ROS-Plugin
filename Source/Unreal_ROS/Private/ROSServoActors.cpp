@@ -1,10 +1,10 @@
-#include "Unreal_ROS.h"
 #include "ROSServoActors.h"
+#include "Unreal_ROS.h"
+#include "PhysicsEngine/PhysicsConstraintComponent.h"
 
 UROSMotorConstrainComponent::UROSMotorConstrainComponent(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 	ConstrainComponent = CreateDefaultSubobject<UPhysicsConstraintComponent>(TEXT("PhysicsConstraint"));
 }
@@ -36,13 +36,12 @@ void UROSMotorConstrainComponent::TickComponent(float DeltaTime, enum ELevelTick
 UROSPoseDriver::UROSPoseDriver(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
-    bWantsBeginPlay = true;
     PrimaryComponentTick.bCanEverTick = true;
  }
 
 void UROSPoseDriver::BeginPlay()
 {
-    root = GetOwner()->GetRootPrimitiveComponent();
+    root = dynamic_cast<UPrimitiveComponent*>(GetOwner()->GetRootComponent());
     
     if (root == nullptr)
     {
@@ -73,7 +72,7 @@ void UROSPoseDriver::TickComponent(float DeltaTime, enum ELevelTick TickType, FA
                   pose_ros.orientation.w
         );
         FTransform trans(rot,loc);
-        root->GetBodyInstance()->SetBodyTransform(trans,true);
+        root->GetBodyInstance()->SetBodyTransform(trans, ETeleportType::TeleportPhysics);
     }
 }
 void UROSPoseDriver::OnPoseData(F_geometry_msgs_Pose pose_ros)

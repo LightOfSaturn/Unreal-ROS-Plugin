@@ -9,7 +9,7 @@ namespace UnrealBuildTool.Rules
     {
         private string ModulePath
         {
-            get { return Path.GetDirectoryName(RulesCompiler.GetModuleFilename(this.GetType().Name)); }
+            get { return ModuleDirectory; }
         }
 
         private string ThirdPartyPath
@@ -52,10 +52,11 @@ namespace UnrealBuildTool.Rules
             return isLibrarySupported;
         }
 
-        public Unreal_ROS(TargetInfo Target)
+        public Unreal_ROS(ReadOnlyTargetRules Target) : base(Target)
         {
             //PrivateIncludePaths.AddRange(
             //	);
+            PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
             PrivateDependencyModuleNames.AddRange(
                 new string[]

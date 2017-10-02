@@ -1,10 +1,9 @@
-#include "Unreal_ROS.h"
 #include "ROSActorPublisher.h"
+#include "Unreal_ROS.h"
 
 UPhysicsPublisherComponent::UPhysicsPublisherComponent(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 }
 

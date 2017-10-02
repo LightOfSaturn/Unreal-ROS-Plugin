@@ -1,5 +1,5 @@
 #pragma once
-#include "Unreal_Ros.h"
+#include "../Public/Unreal_ROS.h"
 #include "TopicTemplate.h"
 #include "ros_msg_test.h"
 #include "ROSActorPublisher.generated.h"
@@ -36,7 +36,7 @@ public:
 	F_geometry_msgs_Pose pose_ros;
 	F_geometry_msgs_Twist twist_ros;
 	F_geometry_msgs_Accel accel_ros;
-	int phys_tick = 0;
+	int phys_tick = 0;	
 	float PhysTotalTime = 0;
 	float LastReported = 0;
 };

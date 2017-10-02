@@ -10,7 +10,7 @@ class ACameraCapturer : public ASceneCapture2D
 {
 	GENERATED_BODY()
 
-private_subobject:
+private:
 
 	UTextureRenderTarget2D* TextureRenderTarget;
 
